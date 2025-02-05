@@ -50,7 +50,6 @@ while running:
     # draw in aim line
     start_pos = player.center
     mouse_pos = pygame.mouse.get_pos()
-    print(mouse_pos)
 
     dx = mouse_pos[0] - start_pos[0]
     dy = mouse_pos[1] - start_pos[1]
@@ -58,12 +57,11 @@ while running:
 
     if distance > MAX_AIM_LENGTH:
         scale = MAX_AIM_LENGTH / distance
-        end_pos = (dx * scale, dy*scale)
+        end_pos = (start_pos[0] + dx * scale, start_pos[1] + dy*scale)
     else:
         end_pos = mouse_pos
 
     pygame.draw.line(screen, AIM_COLOR, start_pos, end_pos, width=AIM_WIDTH)
-
 
     # handle player movements
     key = pygame.key.get_pressed()
